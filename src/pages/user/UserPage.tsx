@@ -9,7 +9,14 @@ const UserPage = () => {
   };
 
   return (
-    <Box sx={{ p: 1 }}>
+    <Box
+      sx={{
+        p: 2,
+        minHeight: "80vh",
+        backgroundColor: "#f5f7fb",
+        borderRadius: 3,
+      }}
+    >
       {/* Header */}
       <Box
         sx={{
@@ -23,7 +30,7 @@ const UserPage = () => {
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
           <PeopleOutlineIcon sx={{ color: "primary.main" }} />
           <Typography variant="h5" fontWeight={600}>
-            Users &amp; Teams
+            Users
           </Typography>
         </Box>
 

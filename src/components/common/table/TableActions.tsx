@@ -12,11 +12,11 @@ interface Props<T> {
 
 export function TableActions<T>({ row, onView, onEdit, onDelete }: Props<T>) {
   return (
-    <Stack direction="row" spacing={1}>
+    <Stack direction="row" spacing={0.5}>
       {onView && (
         <Tooltip title="View">
           <IconButton size="small" onClick={() => onView(row)}>
-            <VisibilityIcon fontSize="small" />
+            <VisibilityIcon fontSize="small" sx={{ color: "#2563EB" }} />
           </IconButton>
         </Tooltip>
       )}
@@ -24,15 +24,15 @@ export function TableActions<T>({ row, onView, onEdit, onDelete }: Props<T>) {
       {onEdit && (
         <Tooltip title="Edit">
           <IconButton size="small" onClick={() => onEdit(row)}>
-            <EditIcon fontSize="small" />
+            <EditIcon fontSize="small" sx={{ color: "#2563EB" }} />
           </IconButton>
         </Tooltip>
       )}
 
       {onDelete && (
         <Tooltip title="Delete">
-          <IconButton size="small" color="error" onClick={() => onDelete(row)}>
-            <DeleteIcon fontSize="small" />
+          <IconButton size="small" onClick={() => onDelete(row)}>
+            <DeleteIcon fontSize="small" sx={{ color: "#DC2626" }} />
           </IconButton>
         </Tooltip>
       )}
