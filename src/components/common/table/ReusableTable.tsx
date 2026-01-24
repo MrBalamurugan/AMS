@@ -11,7 +11,7 @@ import {
   Typography,
 } from "@mui/material";
 import type { Column } from "./types";
-
+//
 interface Props<T> {
   columns: Column<T>[];
   data?: T[];
