@@ -1,56 +1,50 @@
-import { Button, Typography, Stack, Paper } from "@mui/material";
-
-import FacilitiesTable from "@/features/facilities/components/FacilitiesTable";
+import ReusableTable from "@/components/common/table/ReusableTable";
+import type { Column } from "@/components/common/table/types";
+import { TableActions } from "@/components/common/table/TableActions";
 import { useFacilities } from "@/features/facilities/hooks/useFacilities";
-import { useCreateFacility } from "@/features/facilities/hooks/useCreateFacility";
-import { useUpdateFacility } from "@/features/facilities/hooks/useUpdateFacility";
-import Loader from "@/components/common/Loader";
-import ErrorState from "@/components/common/ErrorState";
+import type { Facility } from "@/features/facilities/types";
+import { ROLES } from "@/features/auth/roles";
+import { useAuthUser } from "@/features/auth/hooks/useAuthUser";
 
 export default function FacilitiesPage() {
-  const { data, isLoading, isError } = useFacilities();
-  const createFacility = useCreateFacility();
-  const updateFacility = useUpdateFacility();
+  const { data, isLoading } = useFacilities();
+  const { data: user } = useAuthUser();
 
-  if (isLoading) return <Loader />;
-  if (isError) return <ErrorState />;
-
-  return (
-    <Paper sx={{ p: 3 }}>
-      <Stack
-        direction="row"
-        justifyContent="space-between"
-        alignItems="center"
-        mb={2}
-      >
-        <Typography variant="h5" fontWeight={600}>
-          Facilities
-        </Typography>
-
-        <Button
-          variant="contained"
-          onClick={() =>
-            createFacility.mutate({
-              name: "New Facility",
-              isActive: true,
-            })
+  const columns: Column<Facility>[] = [
+    { key: "name", header: "Facility Name" },
+    {
+      key: "isActive",
+      header: "Status",
+      render: (row) => (row.isActive ? "Active" : "Inactive"),
+    },
+    {
+      key: "actions",
+      header: "Actions",
+      align: "right",
+      render: (row) => (
+        <TableActions
+          row={row}
+          onEdit={
+            user?.role === ROLES.ADMIN
+              ? (r) => console.log("Edit", r)
+              : undefined
           }
-        >
-          Add Facility
-        </Button>
-      </Stack>
-
-      {data && (
-        <FacilitiesTable
-          data={data}
-          onToggle={(f) =>
-            updateFacility.mutate({
-              id: f.id,
-              data: { isActive: !f.isActive },
-            })
+          onDelete={
+            user?.role === ROLES.ADMIN
+              ? (r) => console.log("Delete", r)
+              : undefined
           }
         />
-      )}
-    </Paper>
+      ),
+    },
+  ];
+
+  return (
+    <ReusableTable
+      columns={columns}
+      data={data}
+      loading={isLoading}
+      getRowId={(row) => row.id}
+    />
   );
 }

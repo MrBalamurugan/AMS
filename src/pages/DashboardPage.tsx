@@ -95,6 +95,7 @@ export default function AssetDashboard() {
     <Box
       sx={{
         p: { xs: 1.5, sm: 2, md: 3 },
+        borderRadius: 3,
         bgcolor: "#f8f9fa",
         minHeight: "100vh",
       }}
@@ -387,7 +388,7 @@ export default function AssetDashboard() {
                 >
                   <CalendarIcon
                     sx={{
-                      fontSize: { xs: 48, sm: 60 },
+                      fontSize: { xs: 48, sm: 85 },
                       color: "#6366f1",
                       mb: 1,
                     }}
@@ -402,7 +403,7 @@ export default function AssetDashboard() {
                     Overall average age
                   </Typography>
                   <Typography
-                    variant={isMobile ? "h4" : "h3"}
+                    variant={isMobile ? "h5" : "h5"}
                     fontWeight={700}
                     color="#1f2937"
                   >

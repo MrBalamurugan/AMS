@@ -6,7 +6,7 @@ export const getTheme = (mode: PaletteMode) =>
     palette: {
       mode,
       primary: {
-        main: "#1976d2",
+        main: "#6366F1",
       },
     },
     typography: {

@@ -8,6 +8,7 @@ import FacilitiesPage from "@/pages/FacilitiesPage";
 import UnauthorizedPage from "@/pages/UnauthorizedPage";
 import AppLayout from "@/components/layout/AppLayout";
 import { ROLES } from "@/features/auth/roles";
+import UserPage from "@/pages/user/UserPage";
 
 export default function AppRoutes() {
   return (
@@ -23,7 +24,8 @@ export default function AppRoutes() {
 
           {/* Admin only */}
           <Route element={<RoleProtectedRoute allowedRoles={[ROLES.ADMIN]} />}>
-            <Route path="facilities" element={<FacilitiesPage />} />
+            <Route path="/facilities" element={<FacilitiesPage />} />
+            <Route path="/users" element={<UserPage />} />
           </Route>
         </Route>
       </Route>

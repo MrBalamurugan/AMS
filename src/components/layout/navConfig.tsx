@@ -57,7 +57,7 @@ export const navItems: NavItem[] = [
     children: [
       {
         label: "Facilities",
-        // path: "/facilities",
+        path: "/facilities",
         icon: <ApartmentIcon />,
         roles: [ROLES.ADMIN],
       },
@@ -89,7 +89,17 @@ export const navItems: NavItem[] = [
     roles: [ROLES.ADMIN],
     children: [
       {
-        label: "Departments",
+        label: "Users",
+        path: "/users",
+        roles: [ROLES.ADMIN],
+      },
+      {
+        label: "Teams",
+        // path: "/organization",
+        roles: [ROLES.ADMIN],
+      },
+      {
+        label: "Roles",
         // path: "/organization",
         roles: [ROLES.ADMIN],
       },
