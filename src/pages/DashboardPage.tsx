@@ -11,6 +11,7 @@ import {
   alpha,
   useTheme,
   useMediaQuery,
+  Divider,
 } from "@mui/material";
 import {
   CheckCircle as CheckCircleIcon,
@@ -121,63 +122,48 @@ export default function AssetDashboard() {
               height: "100%",
             }}
           >
-            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
-              <Stack
-                direction={isMobile ? "column" : "row"}
-                spacing={2}
-                alignItems={isMobile ? "center" : "flex-start"}
-                textAlign={isMobile ? "center" : "left"}
+            <CardContent sx={{ p: { xs: 2, sm: 3 }, textAlign: "center" }}>
+              {/* Image */}
+              <Box
+                sx={{
+                  width: 160,
+                  height: 160,
+                  mx: "auto",
+                  mb: 2,
+                }}
               >
                 <Box
+                  component="img"
+                  src={workerImg}
+                  alt="Worker"
                   sx={{
-                    width: { xs: 120, sm: 140 },
-                    height: { xs: 120, sm: 140 },
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "contain",
                   }}
-                >
-                  <Box
-                    component="img"
-                    src={workerImg}
-                    alt="Worker"
-                    sx={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      borderRadius: "8px",
-                    }}
-                  />
-                </Box>
+                />
+              </Box>
 
-                <Box sx={{ flex: 1 }}>
-                  <Typography
-                    variant={isMobile ? "h6" : "h6"}
-                    fontWeight={600}
-                    color="#1f2937"
-                    gutterBottom
-                  >
-                    Welcome {userData.name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="#6b7280"
-                    fontSize="0.875rem"
-                    gutterBottom
-                  >
-                    {userData.email}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="#6366f1"
-                    fontWeight={500}
-                    fontSize="0.875rem"
-                  >
-                    {userData.location}
-                  </Typography>
-                </Box>
-              </Stack>
+              {/* Divider */}
+              <Divider sx={{ mb: 2 }} />
+
+              {/* Text */}
+              <Typography
+                variant="h6"
+                fontWeight={600}
+                color="#1f2937"
+                gutterBottom
+              >
+                Welcome {userData.name}
+              </Typography>
+
+              <Typography variant="body2" color="#6b7280" gutterBottom>
+                {userData.email}
+              </Typography>
+
+              <Typography variant="body2" color="#6366f1" fontWeight={500}>
+                {userData.location}
+              </Typography>
             </CardContent>
           </Card>
         </Grid>

@@ -24,7 +24,7 @@ export const navItems: NavItem[] = [
 
   {
     label: "Assets",
-    // path: "/assets",
+    path: "/assets",
     icon: <InventoryIcon />,
     roles: [ROLES.ADMIN, ROLES.USER],
   },
@@ -38,14 +38,14 @@ export const navItems: NavItem[] = [
 
   {
     label: "Issues",
-    // path: "/issues",
+    path: "/issues",
     icon: <BugReportIcon />,
     roles: [ROLES.ADMIN],
   },
 
   {
     label: "Meters",
-    // path: "/meters",
+    path: "/meters",
     icon: <SpeedIcon />,
     roles: [ROLES.ADMIN],
   },
@@ -56,28 +56,59 @@ export const navItems: NavItem[] = [
     roles: [ROLES.ADMIN],
     children: [
       {
-        label: "Facilities",
-        path: "/facilities",
+        label: "Records",
+        path: "/records",
         icon: <ApartmentIcon />,
         roles: [ROLES.ADMIN],
       },
       {
-        label: "Vendors",
-        // path: "/vendors",
+        label: "Contracts",
+        path: "/contracts",
         icon: <GroupsIcon />,
         roles: [ROLES.ADMIN],
       },
     ],
   },
-
+  {
+    label: "Facilities",
+    path: "/facilities",
+    icon: <SpeedIcon />,
+    roles: [ROLES.ADMIN],
+  },
+  {
+    label: "Vendors",
+    path: "/vendors",
+    icon: <SpeedIcon />,
+    roles: [ROLES.ADMIN],
+  },
   {
     label: "Reports",
     icon: <AssessmentIcon />,
     roles: [ROLES.ADMIN, ROLES.USER],
     children: [
       {
-        label: "Usage Reports",
-        // path: "/reports",
+        label: "Assets",
+        path: "/reportassets",
+        roles: [ROLES.ADMIN, ROLES.USER],
+      },
+      {
+        label: "Tasks",
+        path: "/reporttasks",
+        roles: [ROLES.ADMIN, ROLES.USER],
+      },
+      {
+        label: "Issues",
+        path: "/reportissues",
+        roles: [ROLES.ADMIN, ROLES.USER],
+      },
+      {
+        label: "Service Records",
+        path: "/servicerecords",
+        roles: [ROLES.ADMIN, ROLES.USER],
+      },
+      {
+        label: "Service Contacts",
+        path: "/servicecontracts",
         roles: [ROLES.ADMIN, ROLES.USER],
       },
     ],
@@ -95,12 +126,12 @@ export const navItems: NavItem[] = [
       },
       {
         label: "Teams",
-        // path: "/organization",
+        path: "/teams",
         roles: [ROLES.ADMIN],
       },
       {
         label: "Roles",
-        // path: "/organization",
+        path: "/roles",
         roles: [ROLES.ADMIN],
       },
     ],
@@ -112,8 +143,18 @@ export const navItems: NavItem[] = [
     roles: [ROLES.ADMIN],
     children: [
       {
-        label: "Preferences",
+        label: "Masters",
         // path: "/settings",
+        roles: [ROLES.ADMIN],
+      },
+      {
+        label: "Custom Fields",
+        // path: "/settings",
+        roles: [ROLES.ADMIN],
+      },
+      {
+        label: "CheckLists",
+        path: "/checklists",
         roles: [ROLES.ADMIN],
       },
     ],
@@ -125,8 +166,13 @@ export const navItems: NavItem[] = [
     roles: [ROLES.ADMIN, ROLES.USER, ROLES.VIEWER],
     children: [
       {
-        label: "Support",
-        // path: "/help",
+        label: "About Us",
+        path: "/aboutus",
+        roles: [ROLES.ADMIN, ROLES.USER, ROLES.VIEWER],
+      },
+      {
+        label: "Contact Us",
+        path: "/contactus",
         roles: [ROLES.ADMIN, ROLES.USER, ROLES.VIEWER],
       },
     ],
