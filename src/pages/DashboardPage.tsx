@@ -25,6 +25,7 @@ import {
 } from "@mui/icons-material";
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import workerImg from "@/assets/userprofile.png";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 
 // Mock Data (same as before)
 const userData = {
@@ -95,20 +96,28 @@ export default function AssetDashboard() {
   return (
     <Box
       sx={{
-        p: { xs: 1.5, sm: 2, md: 3 },
+        p: { xs: 1.5, sm: 2, md: 2 },
         borderRadius: 3,
         bgcolor: "#f8f9fa",
         minHeight: "100vh",
       }}
     >
-      <Typography
-        variant={isMobile ? "h5" : "h4"}
-        fontWeight={700}
-        mb={3}
-        color="#1f2937"
-      >
-        Dashboard
-      </Typography>
+      <Stack direction="row" alignItems="center" spacing={1.5} mb={3}>
+        <DashboardOutlinedIcon
+          sx={{
+            fontSize: 28,
+            color: "#6366f1",
+          }}
+        />
+
+        <Typography
+          variant={isMobile ? "h5" : "h5"}
+          fontWeight={600}
+          color="#1f2937"
+        >
+          Dashboard
+        </Typography>
+      </Stack>
 
       {/* Top Row - User Info and Stats */}
       <Grid container spacing={2} mb={3}>
