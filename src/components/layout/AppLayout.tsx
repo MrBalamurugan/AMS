@@ -43,9 +43,8 @@ export default function AppLayout() {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.standard,
           }),
-          backgroundColor:
-            theme.palette.mode === "dark" ? theme.palette.grey[900] : "#F7F8FC",
-          borderBottom: `1px solid ${theme.palette.mode === "dark" ? theme.palette.grey[800] : "#E5E7EB"}`,
+          backgroundColor: theme.palette.background.default,
+          borderBottom: `1px solid ${theme.palette.divider}`,
         }}
       >
         <Toolbar sx={{ minHeight: { xs: 64, md: 70 }, px: { xs: 2, md: 3 } }}>
@@ -57,7 +56,7 @@ export default function AppLayout() {
             sx={{
               mr: 2,
               display: { md: "none" },
-              color: theme.palette.mode === "dark" ? "#fff" : "#374151",
+              color: theme.palette.text.primary,
             }}
           >
             <MenuIcon />
@@ -70,7 +69,7 @@ export default function AppLayout() {
               flexGrow: 1,
               fontWeight: 600,
               fontSize: { xs: "18px", md: "20px" },
-              color: theme.palette.mode === "dark" ? "#fff" : "#111827",
+              color: theme.palette.text.primary,
             }}
           >
             Dashboard
@@ -83,7 +82,7 @@ export default function AppLayout() {
               sx={{
                 width: 40,
                 height: 40,
-                color: theme.palette.mode === "dark" ? "#9CA3AF" : "#6B7280",
+                color: theme.palette.text.secondary,
                 "&:hover": {
                   bgcolor:
                     theme.palette.mode === "dark"
@@ -144,7 +143,7 @@ export default function AppLayout() {
                 gap: 1.5,
                 ml: 1,
                 pl: 1.5,
-                borderLeft: `1px solid ${theme.palette.mode === "dark" ? theme.palette.grey[800] : "#E5E7EB"}`,
+                borderLeft: `1px solid ${theme.palette.divider}`,
               }}
             >
               <Box

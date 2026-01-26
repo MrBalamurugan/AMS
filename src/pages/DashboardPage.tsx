@@ -264,7 +264,7 @@ export default function AssetDashboard() {
                     />
                     <Box>
                       <Typography
-                        variant={isMobile ? "h5" : "h4"}
+                        variant={isMobile ? "h5" : "h5"}
                         fontWeight={700}
                         sx={{ color: task.color }}
                       >
@@ -326,7 +326,7 @@ export default function AssetDashboard() {
                     />
                     <Box>
                       <Typography
-                        variant={isMobile ? "h5" : "h4"}
+                        variant={isMobile ? "h5" : "h5"}
                         fontWeight={700}
                         sx={{ color: issue.color }}
                       >
@@ -372,7 +372,7 @@ export default function AssetDashboard() {
               <Stack
                 direction={isMobile ? "column" : "row"}
                 spacing={3}
-                alignItems={isMobile ? "center" : "flex-start"}
+                alignItems="center"
               >
                 <Stack
                   alignItems="center"
@@ -463,7 +463,7 @@ export default function AssetDashboard() {
               <Stack
                 direction={isMobile ? "column" : "row"}
                 spacing={3}
-                alignItems={isMobile ? "center" : "flex-start"}
+                alignItems="center"
               >
                 <Stack
                   alignItems="center"
@@ -590,7 +590,7 @@ export default function AssetDashboard() {
                     />
                     <Box>
                       <Typography
-                        variant={isMobile ? "h5" : "h4"}
+                        variant={isMobile ? "h5" : "h5"}
                         fontWeight={700}
                         sx={{ color: stat.color }}
                       >
@@ -836,7 +836,7 @@ export default function AssetDashboard() {
                     />
                     <Box>
                       <Typography
-                        variant={isMobile ? "h5" : "h4"}
+                        variant={isMobile ? "h5" : "h5"}
                         fontWeight={700}
                         sx={{ color: contract.color }}
                       >

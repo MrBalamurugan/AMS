@@ -39,6 +39,22 @@ const mockVendors: Vendor[] = [
       "Civil Aerodome, Coimbatore, Civil Aerodome, Coimbatore-643212, Tamil Nadu, India",
     phoneNumber: "+91 93453-66634",
   },
+  {
+    id: "3",
+    name: "Air Aviations",
+    category: "Aviation Services",
+    address:
+      "Civil Aerodome, Coimbatore, Civil Aerodome, Coimbatore-643212, Tamil Nadu, India",
+    phoneNumber: "+91 93453-66634",
+  },
+  {
+    id: "3",
+    name: "Intelliswift",
+    category: "IT Services",
+    address:
+      "Civil Aerodome, Coimbatore, Civil Aerodome, Coimbatore-643212, Tamil Nadu, India",
+    phoneNumber: "+91 93453-66634",
+  },
 ];
 
 /* ------------------ COLUMNS ------------------ */

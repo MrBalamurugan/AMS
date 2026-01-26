@@ -19,10 +19,9 @@ export default function MainLayout({ collapsed }: Props) {
         flexGrow: 1,
         p: 3,
         mt: 8,
-
         ml: { md: `${drawerWidth}px` },
         width: { md: `calc(100% - ${drawerWidth}px)` },
-
+        backgroundColor: "#ffffff",
         transition: theme.transitions.create(["margin", "width"], {
           easing: theme.transitions.easing.sharp,
           duration: theme.transitions.duration.standard,

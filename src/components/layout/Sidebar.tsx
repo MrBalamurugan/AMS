@@ -23,6 +23,7 @@ import { useLogout } from "@/features/auth/hooks/useLogout";
 import type { NavItem } from "./nav.types";
 import fullLogo from "@/assets/faciliteasylogo.png";
 import miniLogo from "@/assets/titlebar.png";
+import { useTheme } from "@mui/material/styles";
 
 interface Props {
   mobileOpen: boolean;
@@ -37,6 +38,7 @@ export default function Sidebar({
   collapsed,
   onToggleCollapse,
 }: Props) {
+  const theme = useTheme();
   const location = useLocation();
   const navigate = useNavigate();
   const { data: user } = useAuthUser();
@@ -68,8 +70,8 @@ export default function Sidebar({
         height: "100%",
         display: "flex",
         flexDirection: "column",
-        bgcolor: "#F7F8FC",
-        color: "text.primary",
+        bgcolor: theme.palette.background.default,
+        color: theme.palette.text.primary,
         position: "relative",
       }}
     >
@@ -82,7 +84,7 @@ export default function Sidebar({
           gap: collapsed ? 0 : 1.25,
           px: collapsed ? 1 : 2,
           py: 1.5,
-          mb: 1.5,
+          mb: 0.5,
           transition: "all 0.3s ease",
         }}
       >
@@ -101,8 +103,9 @@ export default function Sidebar({
             src={collapsed ? miniLogo : fullLogo}
             alt="Logo"
             sx={{
-              height: collapsed ? 50 : 40,
-              width: collapsed ? 50 : "auto",
+              height: collapsed ? 60 : 55, // ⬅ increased
+              width: collapsed ? 60 : "auto",
+              maxWidth: collapsed ? 60 : 200, // ⬅ prevents overflow
               transition: "all 0.3s ease",
               objectFit: "contain",
             }}
@@ -125,11 +128,11 @@ export default function Sidebar({
           sx={{
             width: 34,
             height: 34,
-            bgcolor: "#6366F1",
+            bgcolor: theme.palette.primary.main,
             color: "#fff",
             boxShadow: "0 4px 10px rgba(0,0,0,0.18)",
             "&:hover": {
-              bgcolor: "#4F46E5",
+              bgcolor: theme.palette.primary.dark,
             },
           }}
         >
@@ -179,16 +182,19 @@ export default function Sidebar({
                       py: 1.25,
                       minHeight: 44,
                       justifyContent: collapsed ? "center" : "flex-start",
-                      color: "#6B7280",
+                      color: theme.palette.text.secondary,
                       "&:hover": {
-                        bgcolor: "rgba(99, 102, 241, 0.08)",
+                        bgcolor:
+                          theme.palette.mode === "dark"
+                            ? "rgba(255,255,255,0.08)"
+                            : "rgba(99,102,241,0.08)",
                       },
                     }}
                   >
                     <ListItemIcon
                       sx={{
                         minWidth: collapsed ? "auto" : 40,
-                        color: "#6B7280",
+                        color: theme.palette.text.secondary,
                       }}
                     >
                       {item.icon}
@@ -260,20 +266,23 @@ export default function Sidebar({
                     py: 1.25,
                     minHeight: 44,
                     justifyContent: collapsed ? "center" : "flex-start",
-                    bgcolor: isActive ? "#6366F1" : "transparent",
-                    color: isActive ? "#FFFFFF" : "#6B7280",
+                    bgcolor: isActive
+                      ? theme.palette.primary.main
+                      : "transparent",
+                    color: isActive ? "#fff" : theme.palette.text.secondary,
                     "&:hover": {
                       bgcolor: isActive
-                        ? "#6366F1"
-                        : "rgba(99, 102, 241, 0.08)",
+                        ? theme.palette.primary.main
+                        : theme.palette.mode === "dark"
+                          ? "rgba(255,255,255,0.08)"
+                          : "rgba(99,102,241,0.08)",
                     },
                   }}
                 >
                   <ListItemIcon
                     sx={{
                       minWidth: collapsed ? "auto" : 40,
-                      justifyContent: "center",
-                      color: isActive ? "#FFFFFF" : "#6B7280",
+                      color: isActive ? "#fff" : theme.palette.text.secondary,
                     }}
                   >
                     {item.icon}
@@ -296,11 +305,10 @@ export default function Sidebar({
       </Box>
 
       {/* ================= LOGOUT ================= */}
-      {/* ================= LOGOUT ================= */}
       <Box sx={{ p: collapsed ? 0.5 : 2.5, pt: 2 }}>
         {" "}
         {/* Adjusted padding */}
-        <Divider sx={{ mb: 2, borderColor: "#E5E7EB" }} />
+        <Divider sx={{ mb: 2, borderColor: theme.palette.divider }} />
         <Tooltip title={collapsed ? "Logout" : ""} placement="right">
           <ListItemButton
             onClick={() => logout.mutate()}
@@ -310,16 +318,19 @@ export default function Sidebar({
               py: 1.25,
               minHeight: 44,
               justifyContent: collapsed ? "center" : "flex-start", // Center when collapsed
-              color: "#6B7280",
+              color: theme.palette.text.secondary,
               "&:hover": {
-                bgcolor: "rgba(99, 102, 241, 0.08)",
+                bgcolor:
+                  theme.palette.mode === "dark"
+                    ? "rgba(255,255,255,0.08)"
+                    : "rgba(99,102,241,0.08)",
               },
             }}
           >
             <ListItemIcon
               sx={{
                 minWidth: collapsed ? "auto" : 40, // Remove minWidth when collapsed
-                color: "#6B7280",
+                color: theme.palette.text.secondary,
               }}
             >
               <LogoutIcon />
@@ -351,7 +362,7 @@ export default function Sidebar({
           display: { xs: "block", md: "none" },
           "& .MuiDrawer-paper": {
             width: DRAWER_WIDTH,
-            bgcolor: "#F7F8FC",
+            bgcolor: theme.palette.background.default,
             border: "none",
           },
         }}
@@ -367,11 +378,13 @@ export default function Sidebar({
           display: { xs: "none", md: "block" },
           "& .MuiDrawer-paper": {
             width: drawerWidth,
-            bgcolor: "#F7F8FC",
+            bgcolor: theme.palette.background.default,
             border: "none",
-            boxShadow: "2px 0 8px rgba(0, 0, 0, 0.05)",
-            overflowX: "hidden",
             transition: "width 0.3s",
+            boxShadow:
+              theme.palette.mode === "dark"
+                ? "2px 0 10px rgba(0,0,0,0.6)"
+                : "2px 0 8px rgba(0,0,0,0.05)",
           },
         }}
       >
