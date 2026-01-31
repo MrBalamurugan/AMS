@@ -1,6 +1,18 @@
-import { QueryClient } from "@tanstack/react-query";
+import { QueryClient, QueryCache, MutationCache } from "@tanstack/react-query";
 
 export const queryClient = new QueryClient({
+  queryCache: new QueryCache({
+    onError: (error: any) => {
+      console.error("Global Query Error:", error?.message);
+    },
+  }),
+
+  mutationCache: new MutationCache({
+    onError: (error: any) => {
+      console.error("Global Mutation Error:", error?.message);
+    },
+  }),
+
   defaultOptions: {
     queries: {
       retry: 1,

@@ -1,58 +1,71 @@
+import { useState } from "react";
 import UserListPage from "./step/UserListPage";
+import UserAdd from "./form/UserAdd";
+import FormDrawer from "../../components/common/FormDrawer";
+
 import { Box, Button, Typography } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 
 const UserPage = () => {
-  const handleAddUser = () => {
-    console.log("Add User clicked");
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const handleSaveUser = () => {
+    console.log("Save user");
+    setOpenDrawer(false);
   };
 
   return (
-    <Box
-      sx={{
-        p: 2,
-        minHeight: "80vh",
-        backgroundColor: "#f5f7fb",
-        borderRadius: 3,
-      }}
-    >
-      {/* Header */}
+    <>
       <Box
         sx={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-between",
-          mb: 3,
+          p: 2,
+          minHeight: "80vh",
+          backgroundColor: "#f5f7fb",
+          borderRadius: 3,
         }}
       >
-        {/* Left: Icon + Title */}
-        <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-          <PeopleOutlineIcon sx={{ color: "primary.main" }} />
-          <Typography variant="h5" fontWeight={600}>
-            Users
-          </Typography>
-        </Box>
-
-        {/* Right: Add User Button */}
-        <Button
-          variant="contained"
-          startIcon={<AddIcon />}
-          onClick={handleAddUser}
+        {/* ---------- HEADER ---------- */}
+        <Box
           sx={{
-            borderRadius: 2,
-            textTransform: "none",
-            fontWeight: 500,
-            px: 2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            mb: 3,
           }}
         >
-          Add User
-        </Button>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+            <PeopleOutlineIcon sx={{ color: "primary.main" }} />
+            <Typography variant="h5" fontWeight={600}>
+              Users
+            </Typography>
+          </Box>
+
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={() => setOpenDrawer(true)}
+            sx={{ textTransform: "none" }}
+          >
+            Add User
+          </Button>
+        </Box>
+
+        <UserListPage />
       </Box>
 
-      {/* Content */}
-      <UserListPage />
-    </Box>
+      {/* ---------- FORM DRAWER ---------- */}
+      <FormDrawer
+        open={openDrawer}
+        onClose={() => setOpenDrawer(false)}
+        title="Add User"
+        icon={<PeopleOutlineIcon color="primary" />}
+        submitLabel="Save User"
+        onSubmit={handleSaveUser}
+      >
+        <UserAdd />
+      </FormDrawer>
+    </>
   );
 };
 
